@@ -1,5 +1,19 @@
-<div>
-  Select two json-files to compare
+<div fxLayout="column" fxLayoutAlign="start center">
+  <div>
+    Select two json-files to compare
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <app-json-editor (jsonEmitter)="saveJSON($event, 'left')" ></app-json-editor>
+    <app-json-editor (jsonEmitter)="saveJSON($event, 'right')"></app-json-editor>
+  </div>
+  <button mat-button (click)="compare()">Compare</button>
+  <div *ngIf="noMatches">
+    <p *ngIf="!noMatches.length">No matches, files identically!</p>
+    <div *ngIf="noMatches.length">
+      <p>Files not identically :/</p>
+      <ul>
+        <li *ngFor="let diff of noMatches">{{ diff.key }}</li>
+      </ul>
+    </div>
+  </div>
 </div>
-<app-json-editor></app-json-editor>
-<app-json-editor></app-json-editor>
