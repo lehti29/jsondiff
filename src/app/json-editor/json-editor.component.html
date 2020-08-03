@@ -1,3 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-  <textarea matInput (input)="emitValue()" [(ngModel)]="str"></textarea>
-</div>
+<!-- <div id="codeEditor"></div> -->
+<!-- <ngs-code-editor
+[theme]="theme"
+[codeModel]="codeModel"
+[options]="options"
+(valueChanged)="onCodeChanged($event)">
+</ngs-code-editor> -->
+<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="fileContent"></ngx-monaco-editor>

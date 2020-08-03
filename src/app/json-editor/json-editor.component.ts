@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-json-editor',
@@ -7,22 +7,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class JsonEditorComponent implements OnInit {
 
-  @Output() jsonEmitter = new EventEmitter<string>();
-  str: string;
+  fileContent: string;
+  editorOptions = {theme: 'vs-dark', language: 'json'};
+
+  @Input()
+  set code(code: string) {
+    this.fileContent = code;
+  }
 
   constructor() { }
 
   ngOnInit(): void {
-    this.str = JSON.stringify({
-      key: 'value',
-      foo: 'bar'
-    }, null, '\t');
-    this.emitValue();
-  }
-
-  emitValue() {
-    console.log(this.str);
-    this.jsonEmitter.emit(this.str);
   }
 
 }

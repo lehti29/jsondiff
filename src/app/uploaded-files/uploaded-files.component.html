@@ -1,0 +1,12 @@
+<div>
+  <p>Uploaded files:</p>
+  <div *ngIf="files.length">
+    <!-- <div> -->
+      <button *ngFor="let file of files" mat-button (click)="changeSelectedLanguage(file)">{{ file.name }}</button>
+      <!-- <p> {{ file.content }} </p> -->
+    <!-- </div> -->
+    <div *ngIf="selectedFile$ | async; let selectedFile">
+      <app-json-editor [code]="selectedFile.content"></app-json-editor>
+    </div>
+  </div>
+</div>
